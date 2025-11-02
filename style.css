@@ -1,0 +1,78 @@
+@import 'https://fonts.googleapis.com/css?family=Roboto:300,400,500';
+
+#left  {
+    float: right;    
+     margin: 0 0 0 15px;
+}
+
+body {
+    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+    line-height: 1.5;
+    color: rgb(58, 57, 57);
+    margin: 0;
+}
+
+#super-cool-jessica {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+#bg {
+    display: flex;
+    margin: auto;
+    padding-top: 70px;
+    width: 60%;
+}
+
+main {
+    max-width: 50em;
+    margin: 0 auto;
+    padding: 1em 1em;
+}
+
+h1,
+h2 {
+    text-align: center;
+    color: #333;
+}
+
+a {
+    color: #a20909;
+}
+
+ul {
+    list-style-type: none;
+}
+
+nav {
+    text-align: center;
+}
+
+header {
+    background-image: url("images/header.png");
+    background-position: center top;
+    background-size: contain;
+    background-repeat: no-repeat;
+    line-height: 1.2;
+    padding: 10vw 1em;
+    text-align: center;
+}
+
+.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+}
+
+.myGallery {
+    display: grid;
+    grid-gap: 10px;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  }
+  
+  .myGallery img {
+    width: 100%;
+    border: 0px solid #555;
+  }
