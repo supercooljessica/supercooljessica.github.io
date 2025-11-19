@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<link rel="stylesheet" href="/style.css">
+<link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+<title>Light Switcher</title>
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/arduino-light.min.css">
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/highlight.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/arduino.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body><main>
+    <div style="text-align:right">
+        <p><a href="../engineering.html">
+            Back
+        </a></p>
+    </div>
+    <h1>
+        Mechanical Smart Lights
+    </h1>
+    <h2>
+        Completed: September 2025
+    </h2>
+
+    <img class="center" src="../thumbnails/lightswitch.jpg">
+    <h3>
+        Description:
+    </h3>
+    <p>
+        Pretty self-explanatory!  I wanted to install smart lights in my apartment, but without messing with the internal wiring.
+        This device mechanically flips the light switch when triggered.
+        A XIAO-ESP32C3 microcontroller hosts a local server which can be accessed via Siri using Apple Shortcuts.
+        That way, I can easily say "Siri, turn lights off!" without having to leave my bed!
+    </p>
+
+    <video class="center" controls="controls">
+        <source src="switch.mp4" type="video/mp4">
+    </video>
+
+    <h3>Code</h3>
+    <pre><code class="language-arduino">
+    #include &lt;WiFi.h&gt;
+    #include &lt;WebServer.h&gt;
+    #include &lt;ESP32Servo.h&gt;
+
+    // ─── Wi-Fi (Hotspot) ───────────────────────────────────────────────
+    const char* WIFI_SSID = "";
+    const char* WIFI_PASS = "";
+
+    // iPhone hotspot typical network
+    IPAddress local_IP(172, 20, 10, 2);   // Static IP for ESP32
+    IPAddress gateway(172, 20, 10, 1);
+    IPAddress subnet(255, 255, 255, 240);
+    IPAddress dns1(1, 1, 1, 1);
+    IPAddress dns2(8, 8, 8, 8);
+
+    // (If using Android hotspot, comment above and instead use:)
+    // IPAddress local_IP(192, 168, 43, 2);
+    // IPAddress gateway(192, 168, 43, 1);
+    // IPAddress subnet(255, 255, 255, 0);
+
+    // ─── Servo setup ───────────────────────────────────────────────────
+    // D1 on XIAO ESP32-C3 = GPIO 3
+    #define SERVO_PIN D1
+    #define SERVO_MIN_US 500
+    #define SERVO_MAX_US 2400
+
+    Servo servo;
+    int currentAngle = 90;    // resting at startup
+
+    WebServer server(80);
+
+    // ─── Helper: pulse servo to target then return ─────────────────────
+    void pulseToAngle(int target, int dwellMs = 600, int returnAngle = 90) {
+    target = constrain(target, 0, 180);
+    servo.write(target);
+    currentAngle = target;
+    delay(dwellMs);                  // hold to actuate switch
+    servo.write(returnAngle);        // return to rest
+    currentAngle = returnAngle;
+    }
+
+    // ─── Handlers ──────────────────────────────────────────────────────
+    void handleOn() {
+    pulseToAngle(50);  // “lights on” position
+    server.send(200, "application/json", "{\"ok\":true,\"angle\":90}");
+    }
+
+    void handleOff() {
+    pulseToAngle(120); // “lights off” position
+    server.send(200, "application/json", "{\"ok\":true,\"angle\":90}");
+    }
+
+    void handleStatus() {
+    String json = String("{\"angle\":") + currentAngle + "}";
+    server.send(200, "application/json", json);
+    }
+
+    void handleRoot() {
+    String page = R"HTML(
+    &lt;!doctype html&gt;&lt;html&gt;&lt;body&gt;
+    &lt;h1&gt;Servo Lights&lt;/h1&gt;
+    &lt;p&gt;&lt;a href="/on"&gt;Lights ON (→50° then back)&lt;/a&gt;&lt;/p&gt;
+    &lt;p&gt;&lt;a href="/off"&gt;Lights OFF (→120° then back)&lt;/a&gt;&lt;/p&gt;
+    &lt;p&gt;&lt;a href="/status"&gt;Check Status&lt;/a&gt;&lt;/p&gt;
+    &lt;/body&gt;&lt;/html&gt;
+    )HTML";
+    server.send(200, "text/html", page);
+    }
+
+    // ─── Setup ─────────────────────────────────────────────────────────
+    void setup() {
+    Serial.begin(115200);
+    delay(200);
+
+    // Servo init
+    ESP32PWM::allocateTimer(0);
+    ESP32PWM::allocateTimer(1);
+    ESP32PWM::allocateTimer(2);
+    ESP32PWM::allocateTimer(3);
+    servo.setPeriodHertz(50); // 50 Hz typical
+    servo.attach(SERVO_PIN, SERVO_MIN_US, SERVO_MAX_US);
+    servo.write(currentAngle);
+
+    // Wi-Fi with static IP
+    WiFi.mode(WIFI_STA);
+    WiFi.setHostname("servo-c3");  // won’t resolve on hotspot, but nice to have
+    if (!WiFi.config(local_IP, gateway, subnet, dns1, dns2)) {
+        Serial.println("⚠️ WiFi.config failed, check IP settings");
+    }
+
+    WiFi.begin(WIFI_SSID, WIFI_PASS);
+
+    Serial.print("Connecting");
+    while (WiFi.status() != WL_CONNECTED) {
+        delay(300);
+        Serial.print(".");
+    }
+    Serial.println();
+    Serial.println("✅ Connected to hotspot");
+    Serial.print("📶 IP address: ");
+    Serial.println(WiFi.localIP());
+
+    // Routes
+    server.on("/", handleRoot);
+    server.on("/on", handleOn);
+    server.on("/off", handleOff);
+    server.on("/status", handleStatus);
+
+    server.begin();
+    Serial.println("🌐 HTTP server started");
+    }
+
+    void loop() {
+    server.handleClient();
+    }
+
+    </code></pre>
+
+    <h3>
+        Files
+    </h3>
+    <ul>
+        <li><a href="https://www.thingiverse.com/thing:1156995" target="_blank">Servo Switch Plate Mount (by carjo3000 on Thingiverse)</a></li>
+    </ul>
+
+</main></body>
+</html>

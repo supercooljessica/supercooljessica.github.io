@@ -5,6 +5,11 @@
 <link rel="stylesheet" href="/style.css">
 <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
 <title>Robot Doorman</title>
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/arduino-light.min.css">
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/highlight.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/arduino.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script> 
 </head>
 
 <body><main>
@@ -39,6 +44,64 @@
     <video class="center" controls="controls">
         <source src="buzzer.mp4" type="video/mp4">
     </video>
+
+    <h3>Code</h3>
+    <pre><code class="language-arduino">
+    #include &lt;ESP32Servo.h&gt;
+
+    #define PIEZO_PIN A0
+    #define SERVO_PIN D1
+
+    Servo servo;
+    int buttonOffAngle = 0;
+    int buttonOnAngle = 90;
+    int buzzThreshold = 800;
+    int buzzTime = 3000;
+    int buzzTimeError = 1000;
+
+    void setup() {
+    // put your setup code here, to run once:
+    Serial.begin(9600);
+
+    pinMode(PIEZO_PIN, INPUT);
+    servo.attach(SERVO_PIN);
+    servo.write(buttonOffAngle);
+    }
+
+    int reading;
+    bool waiting;
+    unsigned long lastTime;
+    unsigned long currentTime;
+
+    void loop() {
+    // put your main code here, to run repeatedly:
+    reading = analogRead(PIEZO_PIN);
+    Serial.println(reading);
+    if ((reading > buzzThreshold) && (!waiting)) {
+        waiting = true;
+        lastTime = millis();
+    }
+    else if ((reading > buzzThreshold) && (waiting)) {
+        
+    }
+
+    delay(500);
+        servo.write(buttonOnAngle);
+        delay(2000);
+        servo.write(buttonOffAngle);
+        delay(3000);
+    }
+    </code></pre>
+
+    <h3>
+        Files
+    </h3>
+    <ul>
+        <li><a href="buzzer_arm.stl" download>buzzer_arm.stl</a></li>
+        <li><a href="buzzer_mount.stl" download>buzzer_mount.stl</a></li>
+    </ul>
+    
+
 
 </main></body>
 </html>
