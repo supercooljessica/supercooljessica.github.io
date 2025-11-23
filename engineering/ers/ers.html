@@ -17,12 +17,11 @@
         ERS Slapping Robot
     </h1>
     <h2>
-        Completed: (In Progress)
+        (In progress)
     </h2>
 
-    <img class="center" src="">
-    <video class="center" controls="controls">
-        <source src="" type="video/mp4">
+    <video class="center" muted controls="controls">
+        <source src="ers.mp4" type="video/mp4">
     </video>
 
     <h3>
@@ -31,8 +30,22 @@
     <p>
         The game of Egyptian Rat Screw is a speed-based card game which involves dealing and slapping cards.
         I loved this game growing up and fondly recall playing with my friends on the bus ride to math tournaments.
-        My goal is to build a robot
+        My goal is to build a robot to play against.
+        
     </p>
+    <p>
+        The slapping mechanism is controlled by a stepper motor with a half-gear which slips and allows the spring to quickly pull down the arm.
+        An ESP32-CAM is mounted separately and scans for QR codes on the cards.
+        In the future, this may be changed to full image recognition.
+        The video above shows the slapping mechanism.
+        A flexible hand will be mounted at the end of the rod (see below).
+    </p>
+    <div class="container" style="text-align: center;">
+        <img width="50%" src="hand_scan.png">
+        <img width="50%" src="hand.jpeg">
+    </div>
+
+    
 
 </main></body>
 </html>
