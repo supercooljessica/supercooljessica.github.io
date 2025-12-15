@@ -4,104 +4,32 @@
 <head>
 <link rel="stylesheet" href="/style.css">
 <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
-<title>Robot Doorman</title>
-
-<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/arduino-light.min.css">
-<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/highlight.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/arduino.min.js"></script>
-<script>hljs.initHighlightingOnLoad();</script> 
+<title>Debugging Flowchart</title>
 </head>
 
 <body><main>
     <div style="text-align:right">
-        <p><a href="../engineering.html">
+        <p><a href="/portfolio/index.html">
             Back
         </a></p>
     </div>
     <h1>
-        Robot Doorman
+        Debugging Flowchart
     </h1>
-    <h2>
-        Completed: September 2025
-    </h2>
 
-    <img class="center" src="../thumbnails/buzzer.jpg">
-
-    <h3>
-        Description:
-    </h3>
-    <p>
-        When I moved into my first apartment, they gave me four different keys to unlock various doors just to enter my unit.
-        As it grew colder in Boston, I found it extremely inconvenient to come home after a long day of work and stand outside the apartment building fumbling for my keys just to enter the building and get warm.
-        So instead, I built a robot arm which detects when I buzz my own unit and automatically lets me in.
+    <p style="text-align: center; font-style: italic;">
+        "Give a man a fish, and you feed him for a day; teach a man to fish, and you feed him for a lifetime."
     </p>
     <p>
-        You're probably wondering, doesn't that mean anyone can buzz my apartment and be let in?
-        Technically... yes.  But it only opens the front door (not my unit), and random people can always pretty easily get in at any time.
-        So far, this has been an absolute game changer, especially when I'm carrying groceries, and has been a great conversation starter when people come visit!
+        As a Teaching Fellow for Harvard's digital fabrication course, I am constantly being asked to debug projects.
+        Every time, I always go through the same troubleshooting process to rule out possible errors, but I realized this process wasn't obvious to the students.
+        I designed this chart for them to work through first, which lists common errors and their corresponding solutions.
+        This has saved our teaching staff many hours and taught our students to become more self-sufficient in their prototyping.
     </p>
 
-    <video class="center" controls="controls">
-        <source src="buzzer.mp4" type="video/mp4">
-    </video>
-
-    <h3>Code</h3>
-    <pre><code class="language-arduino">
-    #include &lt;ESP32Servo.h&gt;
-
-    #define PIEZO_PIN A0
-    #define SERVO_PIN D1
-
-    Servo servo;
-    int buttonOffAngle = 0;
-    int buttonOnAngle = 90;
-    int buzzThreshold = 800;
-    int buzzTime = 3000;
-    int buzzTimeError = 1000;
-
-    void setup() {
-    // put your setup code here, to run once:
-    Serial.begin(9600);
-
-    pinMode(PIEZO_PIN, INPUT);
-    servo.attach(SERVO_PIN);
-    servo.write(buttonOffAngle);
-    }
-
-    int reading;
-    bool waiting;
-    unsigned long lastTime;
-    unsigned long currentTime;
-
-    void loop() {
-    // put your main code here, to run repeatedly:
-    reading = analogRead(PIEZO_PIN);
-    Serial.println(reading);
-    if ((reading > buzzThreshold) && (!waiting)) {
-        waiting = true;
-        lastTime = millis();
-    }
-    else if ((reading > buzzThreshold) && (waiting)) {
-        
-    }
-
-    delay(500);
-        servo.write(buttonOnAngle);
-        delay(2000);
-        servo.write(buttonOffAngle);
-        delay(3000);
-    }
-    </code></pre>
-
-    <h3>
-        Files
-    </h3>
-    <ul>
-        <li><a href="buzzer_arm.stl" download>buzzer_arm.stl</a></li>
-        <li><a href="buzzer_mount.stl" download>buzzer_mount.stl</a></li>
-    </ul>
-    
-
+    <div class="photoBlock">
+            <img src="debug_chart.jpg" alt="">
+    </div>
 
 </main></body>
 </html>

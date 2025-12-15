@@ -4,104 +4,45 @@
 <head>
 <link rel="stylesheet" href="/style.css">
 <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
-<title>Robot Doorman</title>
-
-<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/arduino-light.min.css">
-<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/highlight.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/arduino.min.js"></script>
-<script>hljs.initHighlightingOnLoad();</script> 
+<title>ERS SlapBot</title>
 </head>
 
 <body><main>
     <div style="text-align:right">
-        <p><a href="../engineering.html">
+        <p><a href="/portfolio/index.html">
             Back
         </a></p>
     </div>
     <h1>
-        Robot Doorman
+        ERS SlapBot
     </h1>
     <h2>
-        Completed: September 2025
+        (In progress)
     </h2>
 
-    <img class="center" src="../thumbnails/buzzer.jpg">
+    <div class="centered-div">
+        <img src="/engineering/thumbnails/ers.jpeg" width="50%"> 
+    </div>
 
     <h3>
         Description:
     </h3>
     <p>
-        When I moved into my first apartment, they gave me four different keys to unlock various doors just to enter my unit.
-        As it grew colder in Boston, I found it extremely inconvenient to come home after a long day of work and stand outside the apartment building fumbling for my keys just to enter the building and get warm.
-        So instead, I built a robot arm which detects when I buzz my own unit and automatically lets me in.
+        The game of Egyptian Rat Screw is a speed-based card game which involves dealing and slapping cards.
+        I loved this game growing up and fondly recall playing with my friends on the bus ride to math tournaments.
+        Because the game involves reaction-based slapping, it's not possible to play online against a computer... until now!
+        
     </p>
     <p>
-        You're probably wondering, doesn't that mean anyone can buzz my apartment and be let in?
-        Technically... yes.  But it only opens the front door (not my unit), and random people can always pretty easily get in at any time.
-        So far, this has been an absolute game changer, especially when I'm carrying groceries, and has been a great conversation starter when people come visit!
+        The slapping mechanism is controlled by a stepper motor with a half-gear which slips and allows the spring to quickly pull down the arm.
+        Rather than generating the slap motion directly from the motor, this instead mimics the elasticity of human movement, making it less robotic and much more lifelike.
+        The video below shows the slapping mechanism in action.
+        An ESP32-CAM is mounted separately and scans for QR codes on the cards.
+
     </p>
-
-    <video class="center" controls="controls">
-        <source src="buzzer.mp4" type="video/mp4">
+    <video class="center" muted controls="controls">
+        <source src="/engineering/ers/ers.mp4" type="video/mp4">
     </video>
-
-    <h3>Code</h3>
-    <pre><code class="language-arduino">
-    #include &lt;ESP32Servo.h&gt;
-
-    #define PIEZO_PIN A0
-    #define SERVO_PIN D1
-
-    Servo servo;
-    int buttonOffAngle = 0;
-    int buttonOnAngle = 90;
-    int buzzThreshold = 800;
-    int buzzTime = 3000;
-    int buzzTimeError = 1000;
-
-    void setup() {
-    // put your setup code here, to run once:
-    Serial.begin(9600);
-
-    pinMode(PIEZO_PIN, INPUT);
-    servo.attach(SERVO_PIN);
-    servo.write(buttonOffAngle);
-    }
-
-    int reading;
-    bool waiting;
-    unsigned long lastTime;
-    unsigned long currentTime;
-
-    void loop() {
-    // put your main code here, to run repeatedly:
-    reading = analogRead(PIEZO_PIN);
-    Serial.println(reading);
-    if ((reading > buzzThreshold) && (!waiting)) {
-        waiting = true;
-        lastTime = millis();
-    }
-    else if ((reading > buzzThreshold) && (waiting)) {
-        
-    }
-
-    delay(500);
-        servo.write(buttonOnAngle);
-        delay(2000);
-        servo.write(buttonOffAngle);
-        delay(3000);
-    }
-    </code></pre>
-
-    <h3>
-        Files
-    </h3>
-    <ul>
-        <li><a href="buzzer_arm.stl" download>buzzer_arm.stl</a></li>
-        <li><a href="buzzer_mount.stl" download>buzzer_mount.stl</a></li>
-    </ul>
-    
-
 
 </main></body>
 </html>

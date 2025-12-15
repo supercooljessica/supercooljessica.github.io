@@ -24,8 +24,8 @@
     </h4>
 
     <div class="centered-div">
-        <video autoplay loop playsinline muted style="width: 70%;">
-            <source src="small_hoop_slowmo.mp4" type="video/mp4">
+        <video autoplay loop playsinline muted style="width: 50%;">
+            <source src="large_hoop.mp4" type="video/mp4">
         </video>
     </div>
 
@@ -33,18 +33,17 @@
         Description:
     </h3>
     <p>
-        Quidditch (now referred to as "quadball") is a sport from the world of Harry Potter.
-        In the real-life adaptation, players compete to score a volleyball through a set of hula hoops.
-        When a player attempts to shoot or dunk the ball, it is quite difficult to see if it actually traveled through the hoop because the view can often be obstructed.
+        Two years after building the <a href="small_hoop.html">Fab Hoop</a>, I decided to take on a much harder task: scaling it up to full size.
+        This would prove to be much more difficult because as the hoop size increases, the change in magnetic flux is much harder to detect.
+        This turned into the topic of a semester-long independent research project which analyzed the limits of using magnetically induced current as an indicator of object-plane detection.
     </p>
     <p>
-        This device automatically detects if the ball has passed through the plane of the hoop.
-        It relies on Faraday's Law of Magnetic Induction which states that a changing magnetic field through a loop of wire produces a current.
-        The ball is embedded with a magnet and the hoop contains a coil of wire so that when the ball travels through, a small current is picked up and signals the LEDs to light up.
-        This design allows for other objects to pass through the hoop without being picked up by the sensor.
+        This hoop, measuring 36 inches in diameter, is a proof of concept for the techniques used to maximize induced current.
+        And not only was it able to detect a magnetic ball passing through, but it also used signal processing to distinguish between types of movement.
+        It is a reminder that even though some tasks might seemingly call for solutions involving advanced computer vision or other fancy technology, sometimes all it takes is a simple equation and knowing how to apply it.
     </p>
     <p>
-        The build process can be viewed on my <a href="https://fab.cba.mit.edu/classes/863.22/Harvard/people/Jessica/finalproject.html" target="_blank">website</a> documentation from the HTMAA class!
+        The paper below details more of the design process and underlying physics involved.
     </p>
 
     <div class="pdfContainer">

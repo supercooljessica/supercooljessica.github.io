@@ -236,3 +236,72 @@ pre code {
 .pdfCard a:hover {
   border-bottom-color: #a20909;
 }
+
+/* A clean photo + caption block matching your site's style */
+.photoBlock {
+    width: 70%;                 /* readable width similar to your PDF viewer */
+    margin: 2rem auto;          /* center horizontally */
+    text-align: center;         /* center caption */
+}
+
+.photoBlock img {
+    width: 100%;                /* responsive */
+    max-width: 500px;           /* optional: prevents huge images from dominating */
+    height: auto;
+    border-radius: 6px;
+    border: 1px solid #ddd;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.07);
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.photoCaption {
+    margin-top: 0.6rem;
+    font-size: 0.9rem;
+    color: #555;                /* subtle, matches your aesthetic */
+    line-height: 1.4;
+}
+
+/* Clean video + caption container */
+.videoBlock {
+    margin: 2rem auto;          /* centered */
+    text-align: center;         /* center caption */
+}
+
+/* Responsive, square-friendly video styling */
+.videoBlock video {
+    width: 100%;
+    height: auto;
+    border-radius: 6px;
+    border: 1px solid #ddd;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.07);
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    object-fit: cover;          /* makes squares crop nicely if needed */
+    pointer-events: none;       /* allows clicks to pass through if container is a link */
+}
+
+.videoCaption {
+    margin-top: 0.6rem;
+    font-size: 0.9rem;
+    color: #555;
+    line-height: 1.4;
+}
+
+/* Two-column layout for photoBlock and videoBlock */
+.twoColBlocks {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    width: 80%;           /* centered and slightly narrower for readability */
+    margin: 2rem auto;
+}
+
+/* Override widths inside – the grid controls width now */
+.twoColBlocks .photoBlock,
+.twoColBlocks .videoBlock {
+    width: 100% !important;   /* ignore inline width settings */
+    margin: 0;                /* grid spacing handles layout */
+}
