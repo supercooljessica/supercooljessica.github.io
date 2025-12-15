@@ -95,3 +95,92 @@ pre {
 pre code {
   display: block; /* Make code a block-level element within pre */
 }
+
+.centered-div {
+  width: 80%;       /* Must set a width less than 100% */
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  /* Shorthand for top/bottom margins 0, left/right auto */
+  margin: 0 auto;
+
+  /* Add styling */
+  padding: 20px;
+}
+
+
+/* VIDEO GALLERY – square autoplaying project tiles */
+
+.videoGallery {
+    display: grid;
+    grid-gap: 10px;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    margin: 2em 0;
+}
+
+/* Whole tile is clickable */
+.videoCard {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
+    padding: 0.6em 0.6em 0.8em;
+    background: #ffffff;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    text-decoration: none;   /* override global link underline */
+    color: inherit;          /* keep body text color */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.06);
+    transition:
+        box-shadow 0.18s ease-out,
+        transform 0.18s ease-out,
+        border-color 0.18s ease-out;
+}
+
+.videoCard:hover {
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+    transform: translateY(-2px);
+    border-color: #a20909; /* your link red as an accent */
+}
+
+.videoCard:active {
+    transform: translateY(0);
+}
+
+/* Square video area */
+.videoThumb {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1 / 1;  /* makes each block a square */
+    border-radius: 6px;
+    overflow: hidden;
+    background: #f5f5f5;
+}
+
+/* Make the video fill the square neatly */
+.videoThumb video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    pointer-events: none;  /* so clicks go to the <a>, not the video */
+}
+
+/* Title under the video */
+.videoTitle {
+    margin: 0;
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: #333;  /* matches your h1/h2 color */
+    text-align: left;
+}
+
+/* Optional: tighter grid on very small screens */
+@media (max-width: 480px) {
+    .videoGallery {
+        grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    }
+
+    .videoTitle {
+        font-size: 0.9rem;
+    }
+}
