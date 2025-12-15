@@ -165,6 +165,15 @@ pre code {
     pointer-events: none;  /* so clicks go to the <a>, not the video */
 }
 
+.videoThumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    border-radius: 6px;
+    pointer-events: none; /* ensures click still hits the link */
+}
+
 /* Title under the video */
 .videoTitle {
     margin: 0;
@@ -183,4 +192,47 @@ pre code {
     .videoTitle {
         font-size: 0.9rem;
     }
+}
+
+.pdfContainer {
+    width: 100%;               /* take up ~70% of the content width */
+    margin: 2rem auto;        /* centers it */
+    height: 80vh;             /* viewer fills most of the window height */
+    border: 1px solid #ddd;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.07);
+    background: #fff;
+    border-radius: 6px;
+}
+
+.pdfContainer iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+
+.pdfCard {
+  max-width: 600px;
+  margin: 1.5rem auto;
+  padding: 1rem 1.25rem;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  background: #fff;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+.pdfCard h3 {
+  margin-top: 0;
+}
+
+.pdfCard a {
+  display: inline-block;
+  margin-top: 0.5rem;
+  color: #a20909;       /* your existing link color */
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+}
+
+.pdfCard a:hover {
+  border-bottom-color: #a20909;
 }
