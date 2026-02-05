@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<link rel="stylesheet" href="/style.css">
+<link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+<title>Amplituhedra Models</title>
+</head>
+
+<body><main>
+    <div style="text-align:right">
+        <p><a href="/portfolio/index.html">
+            Back
+        </a></p>
+    </div>
+    <h1>
+        Amplituhedra Models
+    </h1>
+    <h2>
+        Completed: February 2026
+    </h2>
+
+    <div class="videoBlock" style="width: 40%;">   <!-- you can override width inline -->
+            <video 
+                src="amplituhedra_sound.mp4"
+                autoplay  
+                muted
+                loop 
+                playsinline
+            ></video>
+            <p class="videoCaption">10-piece model with magnets</p>
+    </div>
+
+    <h3>
+        Description:
+    </h3>
+    <p>
+        I developed a set of 3D-printed, magnetic, snap-together models of amplituhedra as part of a project with Prof. Lauren Williams at Harvard. <a href="https://arxiv.org/pdf/1708.09525" target="_blank">Amplituhedra</a> are geometric objects whose shapes encode relationships in particle physics, and although they arise from high-dimensional mathematics, their structure can be understood through the chambers formed by hyperplane arrangements.
+        </p>
+        <p>
+        To make these abstract shapes tangible, I printed each chamber as a separate piece with embedded magnets so the pieces assemble cleanly into the full object. The result is a tactile model that helps students and researchers visualize and physically explore the geometry behind modern scattering-amplitude theory.
+    </p>
+
+    <div class="myGallery">
+        <div class="photoBlock">
+            <img src="amplituhedra_render.jpg" alt="">
+            <p class="photoCaption">MATLAB-generated rendering of example with four chambers.</p>
+        </div>
+        <div class="photoBlock">
+            <img src="amplituhedra_real.jpg" alt="">
+            <p class="photoCaption">Physical model with four chambers.</p>
+        </div>
+    </div>
+
+    <h3>
+        Fabrication process:
+    </h3>
+    <p>
+        <ol>
+            <li>
+                Generate individual STL files using MATLAB code.
+                <div class="photoBlock">
+                    <img src="amplituhedra_files.png" alt="">
+                </div>
+            </li>
+            <li>
+                Import STLs into CAD modeling software and extrude magnet holes.  (Or, simply open the attached .f3d file and edit parameters to desired magnet size.)
+                <div class="photoBlock">
+                    <img src="amplituhedra_fusion.png" alt="">
+                </div>
+            </li>
+            <li>
+                Export each chamber to slicing software, separating by colors.
+                <div class="photoBlock">
+                    <img src="amplituhedra_prusa.png" alt="">
+                </div>
+            </li>
+            <li>
+                Send to 3D printers.  Print pegs as well.
+                <div class="photoBlock">
+                    <img src="amplituhedra_print.jpg" alt="">
+                </div>
+            </li>
+            <li>
+                Assemble adjacent faces with peg-hole pairs.
+                <div class="photoBlock">
+                    <img src="amplituhedra_assembly.jpg" alt="">
+                </div>
+            </li>
+        </ol>
+        
+    </p>
+
+    
+    <h3>
+        Files
+    </h3>
+    <ul>
+        <li>MATLAB code: <a href="amplituhedra_four.m" download="">amplituhedra_four.m</a>  &nbsp; <a href="amplituhedra_ten.m" download="">amplituhedra_ten.m</a></li>
+        <li>STLs with no magnet holes: <a href="4piece_stls.zip" download>4piece_stls.zip</a> &nbsp; <a href="10piece_stls.zip" download>10piece_stls.zip</a></li>
+        <li>STLs with magnet holes (5x2mm): <a href="4piece_stls_magnets.zip" download>4piece_stls_magnets.zip</a> &nbsp; <a href="10piece_stls_magnets.zip" download>10piece_stls_magnets.zip</a></li>
+        <li>Fusion file with modifiable parameters: <a href="4piece_parametric.f3d" download>4piece_parametric.f3d</a> &nbsp; <a href="10piece_parametric.f3d" download>10piece_parametric.f3d</a></li>
+        <li>Magnet peg STL: <a href="magnet_peg_2x1.stl" download>magnet_peg_2x1.stl</a></li>
+    </ul>
+
+</main></body>
+</html>
