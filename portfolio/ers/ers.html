@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<link rel="stylesheet" href="/style.css">
+<link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+<title>ERS SlapBot</title>
+</head>
+
+<body><main>
+    <div style="text-align:right">
+        <p><a href="/portfolio/index.html">
+            Back
+        </a></p>
+    </div>
+    <h1>
+        ERS SlapBot
+    </h1>
+    <h2>
+        Completed: April 2026
+    </h2>
+
+    <div class="videoBlock" style="width: 40%;">   <!-- you can override width inline -->
+            <video 
+                src="ers_thumbnail.mp4"
+                autoplay  
+                muted
+                loop 
+                playsinline
+            ></video>
+    </div>
+
+    <h3>
+        Description:
+    </h3>
+    <p>
+        The game of Egyptian Rat Screw is a speed-based card game which involves dealing and slapping cards.
+        I loved this game growing up and fondly recall playing with my friends on the bus ride to math tournaments.
+        Because the game involves reaction-based slapping, it's not possible to play online against a computer... until now!
+        
+    </p>
+    <p>
+        The slapping mechanism is controlled by a stepper motor with a half-gear which slips and allows the spring to quickly pull down the arm.
+        Rather than generating the slap motion directly from the motor, this instead mimics the elasticity of human movement, making it less robotic and much more lifelike.
+        A Xiao ESP32S3 Sense identifies the QR codes on the cards and communicates wirelessly via ESP-NOW.
+        The code can be easily adjusted to play with whatever rules you'd like.
+
+    </p>
+    <video class="center" controls="controls">
+        <source src="ers_tiktok.mp4" type="video/mp4">
+    </video>
+    
+    <h3>
+        Files
+    </h3>
+    <ul>
+        <li><a href="ers_bot.f3z" download>ers_bot.f3z</a></li>
+        <li><a href="ers_s3_housing.f3z" download>ers_s3_housing.f3z</a></li>
+        <li><a href="ers_bot_c3_final.ino" download>ers_bot_c3_final.ino</a></li>
+        <li><a href="ers_bot_s3_final.ino" download>ers_bot_s3_final.ino</a></li>
+    </ul>
+
+</main></body>
+</html>
