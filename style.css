@@ -1,34 +1,14 @@
+/* ==========================================================================
+   1. Fonts and base styles
+   ========================================================================== */
+
 @import 'https://fonts.googleapis.com/css?family=Roboto:300,400,500';
 
-#left  {
-    float: right;    
-     margin: 0 0 0 15px;
-}
-
 body {
+    margin: 0;
     font-family: "Roboto", "Helvetica", "Arial", sans-serif;
     line-height: 1.5;
     color: rgb(58, 57, 57);
-    margin: 0;
-}
-
-#super-cool-jessica {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-#bg {
-    display: flex;
-    margin: auto;
-    padding-top: 70px;
-    width: 60%;
-}
-
-main {
-    max-width: 50em;
-    margin: 0 auto;
-    padding: 1em 1em;
 }
 
 h1,
@@ -45,90 +25,124 @@ ul {
     list-style-type: none;
 }
 
+/* ==========================================================================
+   2. Page layout
+   ========================================================================== */
+
+main {
+    max-width: 50em;
+    margin: 0 auto;
+    padding: 1em;
+}
+
 nav {
     text-align: center;
 }
 
+.homeCaption {
+    margin-top: 2rem;
+    font-size: 0.65rem;
+    text-align: center;
+    color: #777;
+}
+
 header {
+    padding: 10vw 1em;
+    line-height: 1.2;
+    text-align: center;
     background-image: url("images/header.png");
     background-position: center top;
     background-size: contain;
     background-repeat: no-repeat;
-    line-height: 1.2;
-    padding: 10vw 1em;
-    text-align: center;
+}
+
+/* Homepage background video; its markup is currently commented out. */
+#bg {
+    display: flex;
+    width: 60%;
+    margin: auto;
+    padding-top: 70px;
+}
+
+#super-cool-jessica {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* ==========================================================================
+   3. Layout utilities
+   ========================================================================== */
+
+#left {
+    float: right;
+    margin: 0 0 0 15px;
 }
 
 .center {
     display: block;
+    width: 50%;
     margin-left: auto;
     margin-right: auto;
-    width: 50%;
-}
-
-.myGallery {
-    display: grid;
-    grid-gap: 10px;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  }
-  
-  .myGallery img {
-    width: 100%;
-    border: 0px solid #555;
-  }
-
-pre {
-  /* For vertical scrolling if content exceeds height */
-  overflow-y: auto; 
-  /* For horizontal scrolling if content exceeds width */
-  overflow-x: auto; 
-  /* Optional: Set a maximum height for vertical scrolling */
-  max-height: 300px; /* Adjust as needed */
-  /* Optional: Set a maximum width for horizontal scrolling */
-  max-width: 100%; /* Adjust as needed */
-  /* Maintain preformatted text properties */
-  white-space: pre; 
-  word-break: normal; 
-}
-
-/* Optional: To ensure the code block inside the pre tag also adapts */
-pre code {
-  display: block; /* Make code a block-level element within pre */
 }
 
 .centered-div {
-  width: 80%;       /* Must set a width less than 100% */
-  margin-left: auto;
-  margin-right: auto;
-  text-align: center;
-  /* Shorthand for top/bottom margins 0, left/right auto */
-  margin: 0 auto;
-
-  /* Add styling */
-  padding: 20px;
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
 }
 
+/* ==========================================================================
+   4. Code blocks
+   ========================================================================== */
 
-/* VIDEO GALLERY – square autoplaying project tiles */
+pre {
+    max-width: 100%;
+    max-height: 300px;
+    overflow: auto;
+    white-space: pre;
+    word-break: normal;
+}
 
+pre code {
+    display: block;
+}
+
+/* ==========================================================================
+   5. Image and project galleries
+   ========================================================================== */
+
+.myGallery,
 .videoGallery {
     display: grid;
-    grid-gap: 10px;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 10px;
+}
+
+.myGallery img {
+    width: 100%;
+    border: 0 solid #555;
+}
+
+.videoGallery {
     margin: 2em 0;
 }
 
-/* Whole tile is clickable */
+/* ==========================================================================
+   6. Project cards and square thumbnails
+   ========================================================================== */
+
 .videoCard {
     display: flex;
     flex-direction: column;
     gap: 0.5em;
     padding: 0.6em 0.6em 0.8em;
+    color: inherit;
+    text-decoration: none;
     background: #ffffff;
-    border-radius: 8px;
     border: 1px solid #ddd;
-    text-decoration: none;   /* override global link underline */
-    color: inherit;          /* keep body text color */
+    border-radius: 8px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.06);
     transition:
         box-shadow 0.18s ease-out,
@@ -137,71 +151,58 @@ pre code {
 }
 
 .videoCard:hover {
+    border-color: #a20909;
     box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
     transform: translateY(-2px);
-    border-color: #a20909; /* your link red as an accent */
 }
 
 .videoCard:active {
     transform: translateY(0);
 }
 
-/* Square video area */
 .videoThumb {
     position: relative;
     width: 100%;
-    aspect-ratio: 1 / 1;  /* makes each block a square */
-    border-radius: 6px;
+    aspect-ratio: 1 / 1;
     overflow: hidden;
     background: #f5f5f5;
+    border-radius: 6px;
 }
 
-/* Make the video fill the square neatly */
-.videoThumb video {
+/* Thumbnail media fills the tile; clicks go to the surrounding card link. */
+.videoThumb video,
+.videoThumb img {
+    display: block;
     width: 100%;
     height: 100%;
     object-fit: cover;
-    display: block;
-    pointer-events: none;  /* so clicks go to the <a>, not the video */
+    pointer-events: none;
 }
 
 .videoThumb img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
     border-radius: 6px;
-    pointer-events: none; /* ensures click still hits the link */
 }
 
-/* Title under the video */
 .videoTitle {
     margin: 0;
     font-size: 0.95rem;
     font-weight: 500;
-    color: #333;  /* matches your h1/h2 color */
     text-align: left;
+    color: #333;
 }
 
-/* Optional: tighter grid on very small screens */
-@media (max-width: 480px) {
-    .videoGallery {
-        grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-    }
-
-    .videoTitle {
-        font-size: 0.9rem;
-    }
-}
+/* ==========================================================================
+   7. PDF embeds and download cards
+   ========================================================================== */
 
 .pdfContainer {
-    width: 100%;               /* take up ~70% of the content width */
-    margin: 2rem auto;        /* centers it */
-    height: 80vh;             /* viewer fills most of the window height */
-    border: 1px solid #ddd;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.07);
+    width: 100%;
+    height: 80vh;
+    margin: 2rem auto;
     background: #fff;
+    border: 1px solid #ddd;
     border-radius: 6px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.07);
 }
 
 .pdfContainer iframe {
@@ -210,98 +211,290 @@ pre code {
     border: none;
 }
 
-
 .pdfCard {
-  max-width: 600px;
-  margin: 1.5rem auto;
-  padding: 1rem 1.25rem;
-  border-radius: 8px;
-  border: 1px solid #ddd;
-  background: #fff;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    max-width: 600px;
+    margin: 1.5rem auto;
+    padding: 1rem 1.25rem;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
 }
 
 .pdfCard h3 {
-  margin-top: 0;
+    margin-top: 0;
 }
 
 .pdfCard a {
-  display: inline-block;
-  margin-top: 0.5rem;
-  color: #a20909;       /* your existing link color */
-  text-decoration: none;
-  border-bottom: 1px solid transparent;
+    display: inline-block;
+    margin-top: 0.5rem;
+    color: #a20909;
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
 }
 
 .pdfCard a:hover {
-  border-bottom-color: #a20909;
+    border-bottom-color: #a20909;
 }
 
-/* A clean photo + caption block matching your site's style */
+/* ==========================================================================
+   8. Photos, videos, and captions
+   ========================================================================== */
+
+.photoBlock,
+.videoBlock {
+    margin: 2rem auto;
+    text-align: center;
+}
+
 .photoBlock {
-    width: 70%;                 /* readable width similar to your PDF viewer */
-    margin: 2rem auto;          /* center horizontally */
-    text-align: center;         /* center caption */
+    width: 70%;
+}
+
+.photoBlock img,
+.videoBlock video {
+    display: block;
+    width: 100%;
+    height: auto;
+    margin-left: auto;
+    margin-right: auto;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.07);
 }
 
 .photoBlock img {
-    width: 100%;                /* responsive */
-    max-width: 500px;           /* optional: prevents huge images from dominating */
-    height: auto;
-    border-radius: 6px;
-    border: 1px solid #ddd;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.07);
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
+    max-width: 500px;
 }
 
-.photoCaption {
-    margin-top: 0.6rem;
-    font-size: 0.9rem;
-    color: #555;                /* subtle, matches your aesthetic */
-    line-height: 1.4;
-}
-
-/* Clean video + caption container */
-.videoBlock {
-    margin: 2rem auto;          /* centered */
-    text-align: center;         /* center caption */
-}
-
-/* Responsive, square-friendly video styling */
 .videoBlock video {
-    width: 100%;
-    height: auto;
-    border-radius: 6px;
-    border: 1px solid #ddd;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.07);
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    object-fit: cover;          /* makes squares crop nicely if needed */
-    pointer-events: none;       /* allows clicks to pass through if container is a link */
+    object-fit: cover;
+    /* Allows clicks to reach a surrounding link. */
+    pointer-events: none;
 }
 
+.photoCaption,
 .videoCaption {
     margin-top: 0.6rem;
     font-size: 0.9rem;
-    color: #555;
     line-height: 1.4;
+    color: #555;
 }
 
-/* Two-column layout for photoBlock and videoBlock */
+/* ==========================================================================
+   9. Paired media layout
+   ========================================================================== */
+
 .twoColBlocks {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 20px;
-    width: 80%;           /* centered and slightly narrower for readability */
+    width: 80%;
     margin: 2rem auto;
 }
 
-/* Override widths inside – the grid controls width now */
+/* The grid controls sizing, including blocks with an inline width. */
 .twoColBlocks .photoBlock,
 .twoColBlocks .videoBlock {
-    width: 100% !important;   /* ignore inline width settings */
-    margin: 0;                /* grid spacing handles layout */
+    width: 100% !important;
+    margin: 0;
+}
+
+/* ==========================================================================
+   10. Magic page
+   ========================================================================== */
+
+.magicPage,
+.magicPage * {
+    box-sizing: border-box;
+}
+
+.magicPage {
+    max-width: 68rem;
+    padding: 1rem clamp(1rem, 4vw, 2rem) 3rem;
+}
+
+.magicNav {
+    text-align: right;
+}
+
+.magicPage h1 {
+    margin: 1.5rem 0 1rem;
+    font-size: clamp(2rem, 5vw, 3rem);
+}
+
+.magicIntro {
+    max-width: 42rem;
+    margin: 0 auto 2.5rem;
+    text-align: center;
+}
+
+.magicPerformances h2 {
+    margin: 0 0 1.5rem;
+}
+
+.magicPhotoGrid {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: clamp(0.5rem, 2vw, 1rem);
+}
+
+.magicPhotoGrid a,
+.magicEvent a {
+    display: block;
+    border-radius: 8px;
+}
+
+.magicPhotoGrid img {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.magicPhotoGrid a:focus-visible,
+.magicEvent a:focus-visible {
+    outline: 2px solid #a20909;
+    outline-offset: 4px;
+}
+
+.magicClipGrid {
+    display: grid;
+    /* Original clip proportions keep all three videos at the same height. */
+    grid-template-columns: minmax(0, 1.383333fr) repeat(2, minmax(0, 1.777778fr));
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+.magicClipGrid video {
+    display: block;
+    width: 100%;
+    height: auto;
+    min-width: 0;
+    aspect-ratio: 16 / 9;
+    object-fit: contain;
+    border-radius: 8px;
+}
+
+.magicClipGrid video:first-child {
+    aspect-ratio: 83 / 60;
+}
+
+.magicPerformances {
+    margin-top: clamp(2.5rem, 6vw, 4rem);
+}
+
+.magicFeature {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1rem;
+    /* Match the width of each photo in the two-column Magic Lab gallery. */
+    width: calc((100% - 2rem) / 2);
+    margin: 0 auto;
+    padding: 2rem 0;
+}
+
+.magicFeature h3,
+.magicEvent h3 {
+    margin: 0;
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+
+.magicEmbed {
+    min-width: 0;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    background: #111;
+    border-radius: 8px;
+}
+
+.magicEmbed iframe {
+    display: block;
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
+.magicEventGrid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 2rem;
+    padding: 2rem 0;
+}
+
+.magicEvent figure {
+    margin: 1rem 0 0;
+}
+
+.magicEvent img {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 3 / 2;
+    object-fit: contain;
+    background: #f5f5f5;
+    border-radius: 8px;
+}
+
+.magicEvent figcaption {
+    margin-top: 0.5rem;
+    font-size: 0.875rem;
+    text-align: center;
+    color: #555;
+}
+
+.magicPerformanceVideo {
+    display: block;
+    width: 100%;
+    min-width: 0;
+    aspect-ratio: 16 / 9;
+    background: #111;
+    border-radius: 8px;
+}
+
+/* ==========================================================================
+   11. Small screens
+   ========================================================================== */
+
+@media (max-width: 48rem) {
+    .magicPhotoGrid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 40rem) {
+    .magicClipGrid,
+    .magicFeature,
+    .magicEventGrid {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .magicFeature {
+        width: 100%;
+    }
+
+    .magicClipGrid video:first-child {
+        /* Preserve equal clip heights when the videos stack on a phone. */
+        width: 77.8125%;
+        justify-self: center;
+    }
+}
+
+@media (max-width: 32rem) {
+    .magicPhotoGrid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 480px) {
+    .videoGallery {
+        grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    }
+
+    .videoTitle {
+        font-size: 0.9rem;
+    }
 }

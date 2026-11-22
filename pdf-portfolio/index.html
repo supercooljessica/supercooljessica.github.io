@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Jessica's engineering and design portfolio.">
+  <title>Jessica | Engineering &amp; Design Portfolio</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <aside class="preview-note" aria-label="Preview information">
+    Portfolio layout study · US Letter · Print at 100% with browser headers and footers off.
+  </aside>
+
+  <main>
+    <section class="page cover" aria-labelledby="cover-title">
+      <header class="page-header">
+        <a href="https://supercooljessica.github.io/">supercooljessica</a>
+        <span>Engineering &amp; design</span>
+      </header>
+      <div class="cover-heading">
+        <p class="eyebrow">Jessica / Portfolio</p>
+        <h1 id="cover-title">Ideas made<br>physical<span class="accent">.</span></h1>
+        <p class="cover-intro">Exploring mathematics, movement, and invention<br>through things I build.</p>
+      </div>
+      <figure class="cover-image">
+        <img src="assets/fab-hoop.jpeg" alt="The small Fab Hoop prototype with a wire coil, clear stand, and connected circuit board.">
+        <figcaption><span class="eyebrow">Featured project / 01</span><span>The Fab Hoop · 2022</span></figcaption>
+      </figure>
+      <footer class="page-footer">
+        <span>Engineering portfolio</span>
+        <a href="https://supercooljessica.github.io/">supercooljessica.github.io</a>
+      </footer>
+    </section>
+
+    <!-- Duplicate this project section for the next case study.
+         Keep factual claims tied to project documentation; review draft copy before submitting. -->
+    <section class="page project" aria-labelledby="hoop-title">
+      <header class="page-header">
+        <span>Jessica / Engineering &amp; design</span>
+        <span class="accent">Selected project / 01</span>
+      </header>
+      <div class="project-heading">
+        <p class="eyebrow">Sensing / Physical prototyping</p>
+        <h2 id="hoop-title">The Fab Hoop</h2>
+        <p class="project-deck">Selective goal detection for quadball,<br>using magnetic induction.</p>
+      </div>
+      <dl class="project-meta">
+        <div><dt>Completed</dt><dd>December 2022</dd></div>
+        <div><dt>Context</dt><dd>MAS.863 / How to Make Almost Anything</dd></div>
+        <div><dt>Course instructor</dt><dd>Prof. Neil Gershenfeld / MIT</dd></div>
+      </dl>
+      <div class="project-body">
+        <figure class="project-image">
+          <img src="assets/fab-hoop.jpeg" alt="The Fab Hoop showing the sensing hoop, support structure, and electronics.">
+          <figcaption>Small-scale prototype with a sensing coil and LED feedback.</figcaption>
+        </figure>
+        <div class="project-copy">
+          <section>
+            <h3>The challenge</h3>
+            <p>In quadball, players score by sending a ball through a hoop. An obstructed view can make a goal difficult to judge.</p>
+          </section>
+          <section>
+            <h3>The approach</h3>
+            <p>I built a hoop that detects a magnet embedded in the ball. As the ball passes through a wire coil, the changing magnetic flux produces an electrical signal that triggers LEDs.</p>
+          </section>
+          <section>
+            <h3>The result</h3>
+            <p>The prototype lights up when the magnetic ball passes through, while allowing other objects to cross without triggering the sensor.</p>
+          </section>
+        </div>
+      </div>
+      <div class="principle" aria-label="Sensing sequence">
+        <span><b>01</b> Magnetic ball</span><span aria-hidden="true">→</span>
+        <span><b>02</b> Coil signal</span><span aria-hidden="true">→</span>
+        <span><b>03</b> LED feedback</span>
+      </div>
+      <nav class="project-links" aria-label="Project documentation">
+        <a href="https://supercooljessica.github.io/portfolio/selective_hoop_detection_part_1/">Watch the demonstration ↗</a>
+        <a href="https://fab.cba.mit.edu/classes/863.22/Harvard/people/Jessica/finalproject.html">Read the build documentation ↗</a>
+      </nav>
+      <footer class="page-footer">
+        <span>The Fab Hoop / Small-scale prototype</span>
+        <span>01</span>
+      </footer>
+    </section>
+  </main>
+</body>
+</html>

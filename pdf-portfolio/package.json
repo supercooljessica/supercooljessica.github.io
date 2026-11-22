@@ -1,0 +1,12 @@
+{
+  "name": "jessica-pdf-portfolio",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Reusable HTML and CSS source for Jessica's PDF portfolio.",
+  "scripts": {
+    "export": "node scripts/export.cjs"
+  },
+  "devDependencies": {
+    "playwright": "1.62.1"
+  }
+}

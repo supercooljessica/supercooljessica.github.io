@@ -2,87 +2,87 @@
 <html lang="en">
 
 <head>
-<link rel="stylesheet" href="../style.css">
-<link rel="icon" type="image/x-icon" href="images/favicon.ico">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="../style.css?v=3">
+<link rel="icon" type="image/x-icon" href="/images/favicon.ico">
 <title>Magic</title>
 </head>
 
-<body><main>
-    <div style="text-align:right">
-        <p><a href="../index.html">
-            Back to home
-        </a></p>
-    </div>
-    
-    <h1>
-        Magic
-    </h1>
+<body>
+<main class="magicPage">
+    <nav class="magicNav" aria-label="Page navigation">
+        <a href="../index.html">Back to home</a>
+    </nav>
 
-    <center><p>
+    <h1>Magic</h1>
+    <p class="magicIntro">
         I've been practicing magic since middle school and it is one of my favorite hobbies.
         Here are some clips of my performances as well as photos with my favorite magicians!
-    </p></center>
+    </p>
 
-    <p style="margin-top:1cm;"> </p>
+    <section class="magicGallery" aria-label="Photos and practice">
+        <div class="magicPhotoGrid">
+            <a href="asi.jpeg"><img src="asi.jpeg" alt="Photo with Asi" width="2292" height="2292" loading="lazy"></a>
+            <a href="blake.JPG"><img src="blake.JPG" alt="Photo with Blake" width="2000" height="2000" loading="lazy"></a>
+            <a href="chris.JPG"><img src="chris.JPG" alt="Photo with Chris" width="3016" height="3016" loading="lazy"></a>
+            <a href="david.JPG"><img src="david.JPG" alt="Photo with David" width="2840" height="2840" loading="lazy"></a>
+            <a href="bruce.jpg"><img src="bruce.jpg" alt="Photo with Bruce" width="3012" height="3013" loading="lazy"></a>
+        </div>
 
-    <div class="myGallery">
-        <img src="asi.jpeg"/>
-        <img src="blake.JPG"/>
-        <img src="chris.JPG"/>
-        <img src="david.JPG"/>
-        <img src="bruce.jpg"/>
-        <video autoplay playsinline muted loop width="100%">
-            <source src="werm.mp4" type="video/mp4">
-        </video>
-        
-    </div>
-    <p style="margin-top:.4cm;"> </p>
-    <div class="myGallery">
-        <video autoplay loop playsinline muted style="width: 100%;">
-            <source src="workshop.mp4" type="video/mp4">
-        </video>
-        
-        <video autoplay loop playsinline muted style="width: 100%;">
-            <source src="tannens.mp4" type="video/mp4">
-        </video>
+        <div class="magicClipGrid" aria-label="Practice and workshop clips">
+            <video autoplay playsinline muted loop preload="metadata" poster="werm_poster.jpg" aria-label="Card flourish practice">
+                <source src="werm.mp4" type="video/mp4">
+            </video>
+            <video autoplay playsinline muted loop preload="metadata" poster="workshop_poster.jpg" aria-label="Magic workshop">
+                <source src="workshop.mp4" type="video/mp4">
+            </video>
+            <video autoplay playsinline muted loop preload="metadata" poster="tannens_poster.jpg" aria-label="Magic at Tannen's">
+                <source src="tannens.mp4" type="video/mp4">
+            </video>
+        </div>
+    </section>
 
-    </div>
+    <section class="magicPerformances" aria-labelledby="magicPerformancesTitle">
+        <h2 id="magicPerformancesTitle">Performances</h2>
 
-    <p style="margin-top:2cm;"> </p>
+        <article class="magicFeature">
+            <h3>SHAM Fall Show, 11/15/2025</h3>
+            <div class="magicEmbed">
+                <iframe src="https://www.youtube.com/embed/ro-j_UHbJeE?si=QtRohHFO5YtORoGn" title="SHAM Fall Show, 11/15/2025" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+        </article>
 
-    <h3 style="text-align: center;">
-        SHAM Fall Show, 11/15/2025
-    </h3>
-    <center>
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/ro-j_UHbJeE?si=QtRohHFO5YtORoGn" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-    </center>
+        <article class="magicFeature">
+            <h3>Clutch, Original Effect, 2026</h3>
+            <div class="magicEmbed">
+                <iframe src="https://www.youtube.com/embed/bmQB1-T7eh8?si=rIhZCQ9xov_IHB3V" title="Clutch, Original Effect, 2026" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+        </article>
 
-    <h3 style="text-align: center;">
-        Boston Magic Lab, 11/13/2025
-    </h3>
-    <div style="text-align: center;">
-        <img src="magiclab.jpg" width="50%">
-        <p>
-            Photo credit: Mark Thomas
-        </p>
-    </div>
+        <div class="magicEventGrid">
+            <article class="magicEvent">
+                <h3>Boston Magic Lab, 11/13/2025</h3>
+                <figure>
+                    <a href="magiclab.jpg"><img src="magiclab.jpg" alt="Performance at Boston Magic Lab in November 2025" width="2048" height="1393" loading="lazy"></a>
+                    <figcaption>Photo credit: Mark Thomas</figcaption>
+                </figure>
+            </article>
+            <article class="magicEvent">
+                <h3>Boston Magic Lab, 08/08/2025</h3>
+                <figure>
+                    <a href="lab.jpg"><img src="lab.jpg" alt="Performance at Boston Magic Lab in August 2025" width="6048" height="4032" loading="lazy"></a>
+                    <figcaption>Photo credit: Mark Thomas</figcaption>
+                </figure>
+            </article>
+        </div>
 
-    <h3 style="text-align: center;">
-        Boston Magic Lab, 08/08/2025
-    </h3>
-    <div style="text-align: center;">
-        <img src="lab.jpg" width="50%">
-        <p>
-            Photo credit: Mark Thomas
-        </p>
-    </div>
-
-    <h3 style="text-align: center;">
-        Magic for Siri (sometime during COVID)
-    </h3>
-    <video class="center" controls="controls">
-        <source src="acaan.mp4" type="video/mp4">
-    </video>
-
-</main></body>
+        <article class="magicFeature">
+            <h3>Magic for Siri (sometime during COVID)</h3>
+            <video class="magicPerformanceVideo" controls playsinline preload="metadata" poster="acaan_poster.jpg">
+                <source src="acaan.mp4" type="video/mp4">
+            </video>
+        </article>
+    </section>
+</main>
+</body>
 </html>
